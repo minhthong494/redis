@@ -2376,6 +2376,12 @@ type GeoRadiusQuery struct {
 	Sort      string
 	Store     string
 	StoreDist string
+	// for geosearch command
+	GeoSearch bool
+	ByBox     bool //
+	ByRadius  bool // default
+	Width     float64
+	Height    float64
 }
 
 type GeoLocationCmd struct {
@@ -2398,7 +2404,20 @@ func NewGeoLocationCmd(ctx context.Context, q *GeoRadiusQuery, args ...interface
 }
 
 func geoLocationArgs(q *GeoRadiusQuery, args ...interface{}) []interface{} {
-	args = append(args, q.Radius)
+	if !q.GeoSearch {
+		args = append(args, q.Radius)
+	} else {
+		if q.ByBox {
+			args = append(args, "bybox")
+			args = append(args, q.Width)
+			args = append(args, q.Height)
+		} else {
+			// default search within radius
+			args = append(args, "byradius")
+			args = append(args, q.Radius)
+		}
+	}
+
 	if q.Unit != "" {
 		args = append(args, q.Unit)
 	} else {

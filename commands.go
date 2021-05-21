@@ -346,6 +346,8 @@ type Cmdable interface {
 	GeoAdd(ctx context.Context, key string, geoLocation ...*GeoLocation) *IntCmd
 	GeoPos(ctx context.Context, key string, members ...string) *GeoPosCmd
 	GeoRadius(ctx context.Context, key string, longitude, latitude float64, query *GeoRadiusQuery) *GeoLocationCmd
+	GeoSearch(ctx context.Context, key string, longitude, latitude float64, query *GeoRadiusQuery) *GeoLocationCmd
+	GeoSearchByMember(ctx context.Context, key, member string, query *GeoRadiusQuery) *GeoLocationCmd
 	GeoRadiusStore(ctx context.Context, key string, longitude, latitude float64, query *GeoRadiusQuery) *IntCmd
 	GeoRadiusByMember(ctx context.Context, key, member string, query *GeoRadiusQuery) *GeoLocationCmd
 	GeoRadiusByMemberStore(ctx context.Context, key, member string, query *GeoRadiusQuery) *IntCmd
@@ -2885,6 +2887,30 @@ func (c cmdable) GeoRadius(
 	cmd := NewGeoLocationCmd(ctx, query, "georadius_ro", key, longitude, latitude)
 	if query.Store != "" || query.StoreDist != "" {
 		cmd.SetErr(errors.New("GeoRadius does not support Store or StoreDist"))
+		return cmd
+	}
+	_ = c(ctx, cmd)
+	return cmd
+}
+
+func (c cmdable) GeoSearch(
+	ctx context.Context, key string, longitude, latitude float64, query *GeoRadiusQuery,
+) *GeoLocationCmd {
+	cmd := NewGeoLocationCmd(ctx, query, "geosearch", key, "fromlonlat", longitude, latitude)
+	if query.Store != "" || query.StoreDist != "" {
+		cmd.SetErr(errors.New("GeoSearch does not support Store or StoreDist"))
+		return cmd
+	}
+	_ = c(ctx, cmd)
+	return cmd
+}
+
+func (c cmdable) GeoSearchByMember(
+	ctx context.Context, key, member string, query *GeoRadiusQuery,
+) *GeoLocationCmd {
+	cmd := NewGeoLocationCmd(ctx, query, "geosearch", key, "frommember", member)
+	if query.Store != "" || query.StoreDist != "" {
+		cmd.SetErr(errors.New("GeoSearchByMember does not support Store or StoreDist"))
 		return cmd
 	}
 	_ = c(ctx, cmd)
