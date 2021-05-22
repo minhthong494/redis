@@ -6,41 +6,42 @@
 
 # Redis client for Golang
 
-![build workflow](https://github.com/go-redis/redis/actions/workflows/build.yml/badge.svg)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/go-redis/redis/v8)](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc)
+![build workflow](https://github.com/minhthong494/redis/actions/workflows/build.yml/badge.svg)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/minhthong494/redis/v8)](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc)
 [![Documentation](https://img.shields.io/badge/redis-documentation-informational)](https://redis.uptrace.dev/)
 [![Chat](https://discordapp.com/api/guilds/752070105847955518/widget.png)](https://discord.gg/rWtp5Aj)
 
 - Join [Discord](https://discord.gg/rWtp5Aj) to ask questions.
 - [Documentation](https://redis.uptrace.dev)
-- [Reference](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc)
-- [Examples](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#pkg-examples)
+- [Reference](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc)
+- [Examples](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#pkg-examples)
 - [RealWorld example app](https://github.com/uptrace/go-treemux-realworld-example-app)
 
 ## Ecosystem
 
-- [Redis Mock](https://github.com/go-redis/redismock).
+- [Redis Mock](https://github.com/minhthong494/redismock).
 - [Distributed Locks](https://github.com/bsm/redislock).
-- [Redis Cache](https://github.com/go-redis/cache).
-- [Rate limiting](https://github.com/go-redis/redis_rate).
+- [Redis Cache](https://github.com/minhthong494/cache).
+- [Rate limiting](https://github.com/minhthong494/redis_rate).
 
 ## Features
 
 - Redis 3 commands except QUIT, MONITOR, and SYNC.
 - Automatic connection pooling with
   [circuit breaker](https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern) support.
-- [Pub/Sub](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#PubSub).
-- [Transactions](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#example-Client-TxPipeline).
-- [Pipeline](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#example-Client-Pipeline) and
-  [TxPipeline](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#example-Client-TxPipeline).
-- [Scripting](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#Script).
-- [Timeouts](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#Options).
-- [Redis Sentinel](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#NewFailoverClient).
-- [Redis Cluster](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#NewClusterClient).
-- [Cluster of Redis Servers](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#example-NewClusterClient--ManualSetup)
+- [Pub/Sub](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#PubSub).
+- [Transactions](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#example-Client-TxPipeline).
+- [Pipeline](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#example-Client-Pipeline)
+  and
+  [TxPipeline](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#example-Client-TxPipeline).
+- [Scripting](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#Script).
+- [Timeouts](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#Options).
+- [Redis Sentinel](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#NewFailoverClient).
+- [Redis Cluster](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#NewClusterClient).
+- [Cluster of Redis Servers](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#example-NewClusterClient--ManualSetup)
   without using cluster mode and Redis Sentinel.
-- [Ring](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#NewRing).
-- [Instrumentation](https://pkg.go.dev/github.com/go-redis/redis/v8?tab=doc#ex-package--Instrumentation).
+- [Ring](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#NewRing).
+- [Instrumentation](https://pkg.go.dev/github.com/minhthong494/redis/v8?tab=doc#ex-package--Instrumentation).
 
 ## Installation
 
@@ -52,10 +53,10 @@ module:
 go mod init github.com/my/repo
 ```
 
-And then install go-redis/v8 (note _v8_ in the import; omitting it is a popular mistake):
+And then install minhthong494/v8 (note _v8_ in the import; omitting it is a popular mistake):
 
 ```shell
-go get github.com/go-redis/redis/v8
+go get github.com/minhthong494/redis/v8
 ```
 
 ## Quickstart
@@ -63,7 +64,7 @@ go get github.com/go-redis/redis/v8
 ```go
 import (
     "context"
-    "github.com/go-redis/redis/v8"
+    "github.com/minhthong494/redis/v8"
 )
 
 var ctx = context.Background()
@@ -151,8 +152,8 @@ For local testing, you can change the variables to refer to your local files, or
 to the corresponding folder for redis-server and copy the config file to `testdata/redis/`:
 
 ```
-ln -s /usr/bin/redis-server ./go-redis/testdata/redis/src
-cp ./go-redis/testdata/redis.conf ./go-redis/testdata/redis/
+ln -s /usr/bin/redis-server ./minhthong494/testdata/redis/src
+cp ./minhthong494/testdata/redis.conf ./minhthong494/testdata/redis/
 ```
 
 Lastly, run:

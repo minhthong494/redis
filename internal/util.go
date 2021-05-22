@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/go-redis/redis/v8/internal/proto"
-	"github.com/go-redis/redis/v8/internal/util"
+	"github.com/minhthong494/redis/v8/internal/proto"
+	"github.com/minhthong494/redis/v8/internal/util"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -53,7 +53,7 @@ func isLower(s string) bool {
 
 //------------------------------------------------------------------------------
 
-var tracer = otel.Tracer("github.com/go-redis/redis")
+var tracer = otel.Tracer("github.com/minhthong494/redis")
 
 func StartSpan(ctx context.Context, name string) (context.Context, trace.Span) {
 	if span := trace.SpanFromContext(ctx); !span.IsRecording() {
