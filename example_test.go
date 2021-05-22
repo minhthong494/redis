@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/minhthong494/redis/v8"
+	"github.com/go-redis/redis/v8"
 )
 
 var (

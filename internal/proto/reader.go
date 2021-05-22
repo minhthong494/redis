@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/minhthong494/redis/v8/internal/util"
+	"github.com/go-redis/redis/v8/internal/util"
 )
 
 // redis resp protocol data type.

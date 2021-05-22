@@ -3,8 +3,8 @@ package redisotel
 import (
 	"context"
 
+	"github.com/go-redis/redis/v8"
 	"github.com/minhthong494/redis/extra/rediscmd/v8"
-	"github.com/minhthong494/redis/v8"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
